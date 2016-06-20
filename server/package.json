@@ -1,0 +1,11 @@
+{
+  "name": "Picocaine",
+  "description": "Picocaine server.",
+  "author": "KEBE",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mongodb": "^2.1.18"
+  }
+}
