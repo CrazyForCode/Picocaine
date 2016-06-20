@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
+    "http": "0.0.0",
     "mongodb": "^2.1.18"
   }
 }
