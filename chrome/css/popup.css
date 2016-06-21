@@ -1,0 +1,61 @@
+html {
+	max-height: 320px;
+}
+
+body {
+	margin: 0px 12px 0px 12px;
+	min-width: 264px;
+}
+
+html, body, #content {
+  height: 100%;
+}
+
+#header {
+	width: 264px;
+	background-color: white;
+	position: fixed;
+	top: 0;
+}
+#header-divider {
+	margin: 4px 0 -1px 0;
+}
+
+#title {
+	margin: 
+}
+
+#content:before {
+  	content: "";
+ 	display: block;
+ 	height: 40px; 
+}
+#content:after {
+  	content: "";
+  	display: block;
+  	height: 40px; 
+}
+#content {
+	margin: 4px;
+  	min-height: 100%;
+}
+
+#footer {
+	width: 264px;
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+}
+#footer-divider {
+	margin: 0 0 4px 0;
+}
+
+#link-type {
+	margin: 0 4px 4px 4px;
+}
+.ui.radio.checkbox .box, .ui.radio.checkbox label {
+	font-size: 0.95rem;
+}
+.ui.form .inline.fields .field {
+	padding: 0 0.5em 0 0;
+}

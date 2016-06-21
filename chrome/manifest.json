@@ -1,0 +1,26 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "Picocaine",
+  "version": "0.1.0",
+
+  // Recommended
+  // "default_locale": "en",
+  "description": "a Chrome extension for Picocaine",
+  // "icons": {...},
+
+  // Optional
+  "author": "ShinCurry",
+
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
