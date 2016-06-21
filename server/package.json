@@ -3,10 +3,16 @@
   "description": "Picocaine server.",
   "author": "KEBE",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "http": "0.0.0",
+    "mongodb": "^2.1.18",
+    "nodeproxy": "^1.0.0"
+    },
   "devDependencies": {
     "gulp": "^3.9.1",
     "http": "0.0.0",
-    "mongodb": "^2.1.18"
+    "mongodb": "^2.1.18",
+    "nodeproxy": "^1.0.0"
   }
 }

@@ -1,13 +1,15 @@
-var http = require("http");
 var CONFIG = require('./config');
+var http = require("http");
+var tool = require('./tools/tool');
+var router = require('./router');
+
+global.CONFIG = CONFIG;
 /**
  * 创建服务器
  */
 var server = http.createServer(function(request, response){
 	// console.log(request, response);
-    response.writeHead(200);
-    response.write('This is Picocaine server, I\'m coding amazing...');
-    response.end();
+    router.route(request, response);
 });
 
 // /**
