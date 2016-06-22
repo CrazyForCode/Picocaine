@@ -32,10 +32,30 @@ function getDataFromPost(request, response, callback){
     });
 }
 
+// Send the response to client and end this collection
 function sendDataToClient(response, data){
     response.writeHead(200);
     response.write(JSON.stringify(data));
     response.end();
+}
+
+// Trans the data gotten from clien to image
+function transToImage(contentType, data){
+    // var entireData = body.toString();           
+    // var contentTypeRegex = /Content-Type: image\/.*/;
+    //
+    // contentType = contentType.substring(1);
+    //
+    //             //Get the location of the start of the binary file,
+    //             //which happens to be where contentType ends
+    // var upperBoundary = entireData.indexOf(contentType) + contentType.length;
+    // var shorterData = entireData.substring(upperBoundary);
+    //
+    //             //replace trailing and starting spaces
+    // var binaryDataAlmost = shorterData.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    //
+    //             //Cut the extra things at the end of the data (Webkit stuff)
+    // return binaryDataAlmost.substring(0, binaryDataAlmost.indexOf(firstLine));
 }
 
 exports.getDataFromGet = getDataFromGet;

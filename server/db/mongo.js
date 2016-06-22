@@ -12,8 +12,17 @@ function isPhotoHashExists(hash, callback){
     // db.save({_id:1, hash:'d39b1bb7d0edfc85397f81765e84f292'});
     // console.log(db);
     db.find({hash:hash}).toArray(function(err, doc){
-        console.log(doc.length !== 0);
+        // console.log(doc.length !== 0);
         callback(doc.length !== 0);
+    });
+}
+
+function savePhoto(hash, tags){
+    var db = dbconn.collection('photo');
+    db.save({
+        hash:hash,
+        time:new Date(),
+        tags:tags
     });
 }
 
@@ -30,3 +39,4 @@ function isPhotoHashExists(hash, callback){
 // }
 
 exports.isPhotoHashExists = isPhotoHashExists;
+exports.savePhoto = savePhoto;
