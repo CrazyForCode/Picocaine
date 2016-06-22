@@ -3,36 +3,93 @@
 <html>
   <head>
     <title>Picocaine</title>
+    <meta charset="utf-8">
     <!-- semantic ui -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script src="js/jquery-3.0.0.min.js"></script>
     <script src="semantic/dist/semantic.min.js"></script>
+    <!-- Qiniu SDK -->
+    <!-- <script src="js/plupload.min.js"></script> -->
+    <!-- <script src="qiniu.min.js"></script> -->
     <!-- custom -->
     <link rel="stylesheet" type="text/css" href="css/popup.css">
-    <script src="popup.js"></script>
   </head>
   <body>
     <div id="content">
-      <div class="ui tiny images">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp3.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp3.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp3.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp1.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp3.jpg">
-        <img class="ui image" src="images/temp2.jpg">
-        <img class="ui image" src="images/temp1.jpg">
+      <div class="ui tiny" id="image-box">
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
+
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp2.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp1.jpg">
+        </div>
+        <div class="ui image box">
+          <img src="http://windisco.qiniudn.com/temp3.jpg">
+        </div>
       </div>
     </div>
 
@@ -46,20 +103,20 @@
         <div class="ui divider" id="footer-divider"></div>
         <div class="inline fields" id="link-type">
           <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="frequency" checked="checked">
+            <div class="ui radio checkbox" id="check-direct">
+              <input type="radio" name="link-type" value="direct">
               <label>Direct link</label>
             </div>
           </div>
           <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+            <div class="ui radio checkbox" id="check-markdown">
+              <input type="radio" name="link-type" value="markdown" >
               <label>Markdown</label>
             </div>
           </div>
           <div class="field">
-            <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+            <div class="ui radio checkbox" id="check-html">
+              <input type="radio" name="link-type" value="html">
               <label>HTML</label>
             </div>
           </div>
@@ -68,3 +125,4 @@
     </div>
   </body>
 </html>
+<script async="async" src="js/popup.js"></script>

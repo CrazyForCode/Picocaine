@@ -5,6 +5,14 @@ html {
 body {
 	margin: 0px 12px 0px 12px;
 	min-width: 264px;
+	width: 264px;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 html, body, #content {
@@ -16,6 +24,10 @@ html, body, #content {
 	background-color: white;
 	position: fixed;
 	top: 0;
+	z-index: 999;
+}
+#header h3 {
+	font-size: 30px;
 }
 #header-divider {
 	margin: 4px 0 -1px 0;
@@ -36,15 +48,36 @@ html, body, #content {
   	height: 40px; 
 }
 #content {
-	margin: 4px;
+	margin: 4px 0 4px 0;
   	min-height: 100%;
 }
+
+.ui.image.box {
+	height: 81px;
+	width: 81px;
+	margin: 2px;
+}
+.ui.tiny img, .ui.tiny svg {
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	max-height: 100%;
+	max-width: 100%;
+}
+.dimmable {
+	z-index: 1;
+}
+
 
 #footer {
 	width: 264px;
 	background-color: white;
 	position: fixed;
 	bottom: 0;
+	z-index: 999;
 }
 #footer-divider {
 	margin: 0 0 4px 0;
