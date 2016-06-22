@@ -1,0 +1,30 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "Picocaine",
+  "version": "0.1.0",
+
+  // Recommended
+  // "default_locale": "en",
+  "description": "a Chrome extension for Picocaine",
+  // "icons": {...},
+
+  // Optional
+  "author": "ShinCurry",
+
+  "browser_action": {
+    "default_icon": "picocaine.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "contextMenus",
+    "storage",
+    "clipboardWrite"
+  ],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
