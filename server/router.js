@@ -8,6 +8,7 @@ handle['/uploadPhoto'] = uploadPhoto;
 
 function route(request, response){
     var path=url.parse(request.url).pathname;
+    console.log(path + ' handle');
     if(typeof handle[path] === 'function')
 	{
         //设置相应的handle

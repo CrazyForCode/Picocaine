@@ -3,13 +3,19 @@
   "description": "Picocaine server.",
   "author": "KEBE",
   "version": "0.0.1",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "gulp": "^3.9.1",
     "http": "0.0.0",
     "mongodb": "^2.1.18",
     "nodeproxy": "^1.0.0"
-    },
+  },
   "devDependencies": {
+    "express": "3.2.4",
+    "express-partials": "*",
+    "gm": "^1.22.0",
     "gulp": "^3.9.1",
     "http": "0.0.0",
     "mongodb": "^2.1.18",

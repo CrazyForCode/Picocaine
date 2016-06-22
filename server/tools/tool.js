@@ -11,7 +11,7 @@ function getEncryptCode(data){
 function getDataFromGet(request){
     var getData = url.parse(request.url,true).query;
     var getData1 = queryString.parse(getData);
-    return getData1;
+    return getData;
 }
 function getClientIp(request) {
     return request.headers['x-forwarded-for'] ||
@@ -39,9 +39,17 @@ function sendDataToClient(response, data){
     response.end();
 }
 
+// Send the response to client and end this collection
+function sendPhotoToClient(response, mime, data){
+    response.writeHead(200);
+    response.writeHead('Content-Type: ' + mime);
+    response.write(data);
+    response.end();
+}
+
 // Trans the data gotten from clien to image
 function transToImage(contentType, data){
-    // var entireData = body.toString();           
+    // var entireData = body.toString();
     // var contentTypeRegex = /Content-Type: image\/.*/;
     //
     // contentType = contentType.substring(1);
@@ -64,3 +72,4 @@ exports.getClientIp = getClientIp;
 
 exports.getEncryptCode = getEncryptCode;
 exports.sendDataToClient = sendDataToClient;
+exports.sendPhotoToClient = sendPhotoToClient;
