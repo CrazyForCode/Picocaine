@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "express": "3.2.4",
-    "express-partials": "*",
     "gm": "^1.22.0",
     "gulp": "^3.9.1",
     "http": "0.0.0",

@@ -6,32 +6,6 @@ var gm = require('gm')
 ,	imageMagick = gm.subClass({ imageMagick : true });
 
 function uploadPhoto(request, response) {
-    // console.log(req.files);
-    // var path = req.files.photo.path;	//获取用户上传过来的文件的当前路径
-    //   var sz = req.files.photo.size;
-    //   console.log(path);
-    //   if (sz > 2*1024*1024) {
-    //     fs.unlink(path, function() {	//fs.unlink 删除用户上传的文件
-    //       res.end('1');
-    //     });
-    //   } else if (req.files.photo.type.split('/')[0] != 'image') {
-    //     fs.unlink(path, function() {
-    //       res.end('2');
-    //     });
-    //   } else {
-    //     imageMagick(path)
-    //     .resize(150, 150, '!') //加('!')强行把图片缩放成对应尺寸150*150！
-    //     .autoOrient()
-    //     .write(CONFIG.photo.saveDir + '/' +req.files.photo.name, function(err){
-    //       if (err) {
-    //         console.log(err);
-    //         res.end();
-    //       }
-    //       fs.unlink(path, function() {
-    //         return res.end('3');
-    //       });
-    //     });
-    //   }
     try{
         var path = request.files.photo.path;
         if (request.files.photo.size > 1024*1024){
@@ -55,6 +29,7 @@ function uploadPhoto(request, response) {
         });
     }
     catch (e) {
+        //Params invalid.
         res = {
             error:1001,
             msg:'Invalid data.'
@@ -63,14 +38,8 @@ function uploadPhoto(request, response) {
     }
 }
 function onDataGetFromPost(request, response, data){
-    // console.log(data);
-    // console.log(data);
     var res = {};
-
-	// var multipartData = new MultipartParser(request.headers['content-type'], data);
 	var hash = tool.getEncryptCode(data);
-    // res['hash'] = hash;
-    // console.log(multipartData.parts['test'].body);
     var d;
     try {
         d = JSON.parse(request.body.data);
@@ -87,18 +56,14 @@ function onDataGetFromPost(request, response, data){
                 tool.sendDataToClient(response, res);
             }
             else{
-                var fileName = hash + '.' + request.files.photo.type.split('/')[1];
-                // console.log(new Buffer(multipartData.parts['photo'].body));
-                // var wd = new Buffer(multipartData.parts['photo'].body, 'ascii');
-                // console.log(wd);
+                var fileType = request.files.photo.type.split('/')[1];
+                var fileName = hash + '.' + fileType;
                 fs.writeFile(CONFIG.photo.saveDir + '/' + fileName,
                     data,
                     'binary',
                     function(err,res){
                     if(err){
                         console.log(err);
-                        // res.error = 1000;
-                        // res.msg = 'Upload photo faild.';
                         res = {
                             error:1000,
                             msg:'Upload photo faild.'
@@ -113,8 +78,29 @@ function onDataGetFromPost(request, response, data){
                                 picurl:fileName
                             }
                         };
-                        tool.sendDataToClient(response, res);
+                        // console.log(fileType);
+                        if (fileType != 'gif'){
+                            gm(request.files.photo.path)
+                                .size(function(err, size){
+                                    console.log(err);
+                                    var scaleX = CONFIG.photo.savePhotoSize, scaleY = CONFIG.photo.savePhotoSize;
+                                    size.width>size.height?(scaleY = size.height/(size.width/CONFIG.photo.savePhotoSize)):(scaleX = size.width/(size.height/CONFIG.photo.savePhotoSize));
+                                    // gm(request.files.photo.path)
+                                    //     .resize(size.width * CONFIG.photo.compressSmallScale, size.height * CONFIG.photo.compressSmallScale)
+                                    //     .autoOrient()
+                                    //     .write(CONFIG.photo.saveDir + '/' + hash + '-small.' + fileType, function(){
+                                    //
+                                    //     });
+                                    gm(request.files.photo.path)
+                                        .resize(scaleX, scaleY)
+                                        .autoOrient()
+                                        .write(CONFIG.photo.saveDir + '/' + hash + '-small.' + fileType, function(){
+                                            tool.sendDataToClient(response, res);
+                                        });
+                                });
+                        }
                     }
+                    // Compress image after response end.
                 });
             }
             // console.log(res);

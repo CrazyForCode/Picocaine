@@ -42,7 +42,7 @@ function sendDataToClient(response, data){
 // Send the response to client and end this collection
 function sendPhotoToClient(response, mime, data){
     response.writeHead(200);
-    response.writeHead('Content-Type: ' + mime);
+    // response.writeHead('Content-Type: ' + mime);
     response.write(data);
     response.end();
 }

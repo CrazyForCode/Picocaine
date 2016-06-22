@@ -9,7 +9,10 @@ CONFIG = {
 	photo:{
 		saveDir:__dirname + "/uploads",
 		// photoCalcSalt:"lovecfc",
-		encryptMethod:"md5"
+		encryptMethod:"md5",
+		compressSmallScale:0.3,
+		compressBigScale:0.6,
+		savePhotoSize:100
 	}
 };
 module.exports = CONFIG;

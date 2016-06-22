@@ -9,4 +9,4 @@
 | Name | URL | Method|  Request Data | Response Data | Error Examples | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | Upload Photo to server | /uploadPhoto | POST | data:{"tags":["", ""]} photo:(a photo) | {"error":0,"data":{"picurl":"b1b77ec87e3f07d895f95c3166d69dac.png"}} | {"error":1002,"msg":"Photo already exists."}, {"error":1000 ,"msg":"Upload photo faild"} |
-| Get photo | /getPhoto | GET | picurl:xx.jpg, quality:small | A pic | {"error":1003,"msg":"Photo not exists."} | The quality can be these: 'small', 'big', 'source' |
+| Get photo | /getPhoto | GET | picurl:xx.jpg, quality:small | A pic | {"error":1003,"msg":"Photo not exists."} | The quality can be these: 'small', 'source' |
