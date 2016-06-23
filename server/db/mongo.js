@@ -17,12 +17,24 @@ function isPhotoHashExists(hash, callback){
     });
 }
 
-function savePhoto(hash, tags){
+function savePhoto(hash, type, tags){
     var db = dbconn.collection('photo');
     db.save({
         hash:hash,
         time:new Date(),
+        type:type,
         tags:tags
+    });
+}
+
+function searchPhotoByTags(tag, page, pageSize, callback){
+    pageSize = pageSize>100?100:pageSize;
+    var db = dbconn.collection('photo');
+    var r = new RegExp('.*'+tag+'*');
+    db.find({
+        tags:{$in:[r]}
+    }).skip(page * pageSize).limit(pageSize).toArray(function(err, doc){
+        callback(doc);
     });
 }
 
@@ -40,3 +52,4 @@ function savePhoto(hash, tags){
 
 exports.isPhotoHashExists = isPhotoHashExists;
 exports.savePhoto = savePhoto;
+exports.searchPhotoByTags = searchPhotoByTags;

@@ -8,5 +8,6 @@
 
 | Name | URL | Method|  Request Data | Response Data | Error Examples | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| Upload Photo to server | /uploadPhoto | POST | data:{"tags":["", ""]} photo:(a photo) | {"error":0,"data":{"picurl":"b1b77ec87e3f07d895f95c3166d69dac.png"}} | {"error":1002,"msg":"Photo already exists."}, {"error":1000 ,"msg":"Upload photo faild"} |
+| Upload Photo to server | /uploadPhoto | POST | data:{"tags":["", ""], "passCode":"lovecfc"} photo:(a photo) | {"error":0,"data":{"picurl":"b1b77ec87e3f07d895f95c3166d69dac.png"}} | {"error":1002,"msg":"Photo already exists."}, {"error":1000 ,"msg":"Upload photo faild"} |
 | Get photo | /getPhoto | GET | picurl:xx.jpg, quality:small | A pic | {"error":1003,"msg":"Photo not exists."} | The quality can be these: 'small', 'source' |
+| Search Photo By Tags | /searchPhoto | POST | {"tag":"haha", "passCode":"lovecfc"} | {"error":0,"data":[{"picurl":"4d4afd7def03d8e0b67d5621f6f9b313.png","tags":["hahaha"]}]} | | None |

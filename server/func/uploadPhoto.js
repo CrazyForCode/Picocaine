@@ -1,11 +1,18 @@
 var tool = require('../tools/tool');
-var MultipartParser = require('../tools/MultipartParser.js');
-var mongo = require('../db/mongo');
+// var MultipartParser = require('../tools/MultipartParser.js');
+var db = require('../db/mongo');
 var fs = require('fs');
 var gm = require('gm')
 ,	imageMagick = gm.subClass({ imageMagick : true });
 
 function uploadPhoto(request, response) {
+    if (!tool.checkPassCode(request)){
+        tool.sendDataToClient(response, {
+            error:1,
+            msg:'PassCode check faild.'
+        });
+        return;
+    }
     try{
         var path = request.files.photo.path;
         if (request.files.photo.size > 1024*1024){
@@ -44,7 +51,7 @@ function onDataGetFromPost(request, response, data){
     try {
         d = JSON.parse(request.body.data);
         // console.log(multipartData.parts['photo']);
-        mongo.isPhotoHashExists(hash, function(result){
+        db.isPhotoHashExists(hash, function(result){
             // res['isExists'] = result;
             var res = {};
             if(result === true){
@@ -71,7 +78,7 @@ function onDataGetFromPost(request, response, data){
                         tool.sendDataToClient(response, res);
                     }
                     else{
-                        mongo.savePhoto(hash, d.tags);
+                        db.savePhoto(hash, fileType, d.tags);
                         res = {
                             error:0,
                             data:{

@@ -19,5 +19,9 @@
     "http": "0.0.0",
     "mongodb": "^2.1.18",
     "nodeproxy": "^1.0.0"
-  }
+  },
+  "repository": {
+     "type": "git",
+     "url": "https://github.com/CrazyForCode/Picocaine"
+   }
 }
