@@ -2,13 +2,14 @@
   "name": "Picocaine",
   "description": "Picocaine server.",
   "author": "KEBE",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1-alpha",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
+    "express": "3.2.4",
+    "gm": "^1.22.0",
     "gulp": "^3.9.1",
-    "http": "0.0.0",
     "mongodb": "^2.1.18",
     "nodeproxy": "^1.0.0"
   },
@@ -16,7 +17,6 @@
     "express": "3.2.4",
     "gm": "^1.22.0",
     "gulp": "^3.9.1",
-    "http": "0.0.0",
     "mongodb": "^2.1.18",
     "nodeproxy": "^1.0.0"
   },

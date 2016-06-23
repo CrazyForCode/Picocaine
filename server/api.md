@@ -1,8 +1,9 @@
 ## Picocaine server api introduce
 
 - There are some rules you need understand before developing.
-    1. All of the results is a JSON str, and there must be have param named 'error', if the param's value is 0 (type integer), it mean success, others are unsuccess. If it success, you can find the data you want from the 'data' param, it is a object. else, these will be a param named 'msg' (type string) to answer you what happend.
+    1. All of the results is a JSON str, and there must be have param named 'error', if the param's value is 0 (type integer), it means success, others mean unsuccess. If it success, you can find the data you want from the 'data' param, it is also a object or a array. else, these will be a param named 'msg' (type string) to answer you what happend.
     2. All of the data you'll send to server also must be a JSON str if it POST method API, and you should save it at a value witch name is 'data'. If you want send photo to server, you need two param, the one is you 'data', and the other is you photo(type file), the photo's param name is 'photo'.
+    3. If you want to show a photo in HTML, you need a base url like http://localhost/getPhoto, and then, use the GET method to get photo with two params, the one named 'picurl', which from the result of API, and the other named 'quality', which is to set the quality you want to get, now support two kine value, 'small' and 'source'.
 
 - The apis as follow
 
