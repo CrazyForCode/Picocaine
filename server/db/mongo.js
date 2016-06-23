@@ -38,6 +38,34 @@ function searchPhotoByTags(tag, page, pageSize, callback){
     });
 }
 
+
+function addSearchHistory(tag){
+    var db = dbconn.collection('sc_history');
+    // console.log(db);
+    db.findAndModify(
+        {tag:tag},
+        [],
+        {$inc:{times:1}, $set:{updateTime:new Date()}},
+        { upsert: true, new: true },
+        function(err, doc){
+            if(!doc){
+                //Need insert
+                db.insert({
+                    tag: tag,
+                     times: 1,
+                     updateTime:new Date()
+                });
+            }
+        });
+}
+
+function findHotTags(size, callback){
+    var db = dbconn.collection('sc_history');
+    db.find().sort({times:-1}).limit(size>100?100:size).toArray(function(err,doc){
+        callback(doc);
+    })
+}
+
 // // Category
 // {
 //     "_id":"asdasda",
@@ -53,3 +81,5 @@ function searchPhotoByTags(tag, page, pageSize, callback){
 exports.isPhotoHashExists = isPhotoHashExists;
 exports.savePhoto = savePhoto;
 exports.searchPhotoByTags = searchPhotoByTags;
+exports.addSearchHistory = addSearchHistory;
+exports.findHotTags = findHotTags;

@@ -49,8 +49,9 @@ function sendPhotoToClient(response, mime, data){
 
 function checkPassCode(request){
     try {
+        // console.log(JSON.parse(request.body.data).passCode);
         // var d = JSON.parse(request.body.data);
-        return JSON.parse(request.body.data).passCode === passCode;
+        return JSON.parse(request.body.data).passCode === CONFIG.passCode;
     } catch (e) {
         return false;
     }

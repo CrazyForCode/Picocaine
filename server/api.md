@@ -10,4 +10,5 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | Upload Photo to server | /uploadPhoto | POST | data:{"tags":["", ""], "passCode":"lovecfc"} photo:(a photo) | {"error":0,"data":{"picurl":"b1b77ec87e3f07d895f95c3166d69dac.png"}} | {"error":1002,"msg":"Photo already exists."}, {"error":1000 ,"msg":"Upload photo faild"} |
 | Get photo | /getPhoto | GET | picurl:xx.jpg, quality:small | A pic | {"error":1003,"msg":"Photo not exists."} | The quality can be these: 'small', 'source' |
-| Search Photo By Tags | /searchPhoto | POST | {"tag":"haha", "passCode":"lovecfc"} | {"error":0,"data":[{"picurl":"4d4afd7def03d8e0b67d5621f6f9b313.png","tags":["hahaha"]}]} | | None |
+| Search Photo By Tag | /searchPhoto | POST | {"tag":"haha", "passCode":"lovecfc", "page":0, "pageSize":10} | {"error":0,"data":[{"picurl":"4d4afd7def03d8e0b67d5621f6f9b313.png","tags":["hahaha"]}]} | | The pageSize is lower than 100. The 'page' is to show the current page, start with 0. |
+| Get hot tags | /getHotTags | POST | {"pageSize":100, "passCode":"lovecfc"} | {"error":0,"data":[{"tag":"Test"},{"tag":"Test1"},{"tag":"haha"},{"tag":"Test123"}]} | | The 'pageSize' is lower than 100. |

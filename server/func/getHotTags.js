@@ -1,6 +1,7 @@
 var db = require('../db/mongo');
 var tool = require('../tools/tool');
-function searchPhoto(request, response){
+
+function getHotTags(request, response){
     if (!tool.checkPassCode(request)){
         tool.sendDataToClient(response, {
             error:1,
@@ -8,12 +9,9 @@ function searchPhoto(request, response){
         });
         return;
     }
-    var tag;
-    var page, pageSize;
+    var pageSize;
     try {
         var data = JSON.parse(request.body.data);
-        tag = data.tag;
-        page = data.page;
         pageSize = data.pageSize;
     } catch (e) {
         tool.sendDataToClient(response, {
@@ -22,21 +20,18 @@ function searchPhoto(request, response){
         });
         return;
     }
-    db.searchPhotoByTags(tag, page, pageSize, function(doc){
+    db.findHotTags(pageSize, function(data){
         var r = [];
-        for(var i in doc){
-            // console.log(i);
+        for (var i in data){
             r.push({
-                picurl:doc[i].hash + '.' + doc[i].type,
-                tags:doc[i].tags
+                tag:data[i].tag
             });
         }
-        db.addSearchHistory(tag);
         tool.sendDataToClient(response, {
             error:0,
             data:r
         });
-    })
+    });
 }
 
-module.exports = searchPhoto;
+module.exports = getHotTags;

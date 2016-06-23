@@ -1,12 +1,14 @@
 var getPhoto = require('./func/getPhoto');
 var uploadPhoto = require('./func/uploadPhoto');
 var searchPhoto = require('./func/searchPhoto');
+var getHotTags = require('./func/getHotTags');
 var url = require('url');
 
 var handle = {}
 handle['/getPhoto'] = getPhoto;
 handle['/uploadPhoto'] = uploadPhoto;
 handle['/searchPhoto'] = searchPhoto;
+handle['/getHotTags'] = getHotTags;
 
 function route(request, response){
     var path=url.parse(request.url).pathname;
