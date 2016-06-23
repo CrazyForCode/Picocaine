@@ -2,7 +2,7 @@
   "name": "Picocaine",
   "description": "Picocaine server.",
   "author": "KEBE",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha",
   "scripts": {
     "start": "node index.js"
   },

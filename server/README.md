@@ -6,3 +6,10 @@
 - Check key
 - Upload photo in category and tags
 - Get photo in url
+
+
+#### Install
+```
+$ npm Install
+$ npm start
+```
