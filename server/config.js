@@ -5,7 +5,7 @@ CONFIG = {
 	port:2333,
 	isPublic:false,
 	passCode:"lovecfc",
-	mongoUrl:"mongodb://localhost:27017/picocaine",
+	mongoUrl:process.env.MONGO_CON_STR || "mongodb://localhost:27017/picocaine",
 	photo:{
 		saveDir:__dirname + "/uploads",
 		// photoCalcSalt:"lovecfc",

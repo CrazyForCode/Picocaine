@@ -8,4 +8,7 @@ RUN npm install
 
 EXPOSE 2333
 
+ENV PASS_CODE lovecfc
+ENV MONGO_CON_STR mongodb://172.17.0.1:27017/picocaine
+
 CMD npm start
